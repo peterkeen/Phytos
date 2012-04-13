@@ -20,6 +20,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
 
+  include CarrierWave::MimeTypes
+
   # Choose what kind of storage to use for this uploader:
   storage :fog
 
@@ -28,6 +30,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def store_dir
     "#{mounted_as}/#{model.id}"
   end
+
+  process :set_content_type
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url

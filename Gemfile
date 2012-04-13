@@ -13,6 +13,7 @@ gem "fog", "~> 1.3.1"
 gem 'blitline'
 gem 'flash_cookie_session'
 gem 'devise'
+gem 'mime-types'
 
 # Gems used only for assets and not required
 # in production environments by default.
