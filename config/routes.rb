@@ -1,4 +1,6 @@
 Phytos::Application.routes.draw do
+  devise_for :users
+
   match '/photos/upload' => 'photos#upload'
 
   resources :photos

@@ -1,4 +1,7 @@
 class PhotosController < ApplicationController
+
+  before_filter :authenticate_user!, :except => [:index, :show]
+  
   # GET /photos
   # GET /photos.json
   def index
@@ -46,7 +49,12 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(params[:photo])
+    photo_params = params[:photo] || {}
+    if photo_params[:name] == '' || photo_params[:name] == nil
+      photo_params[:name] = photo_params[:photo].original_filename
+    end
+    
+    @photo = Photo.new(photo_params)
 
     respond_to do |format|
       if @photo.save
