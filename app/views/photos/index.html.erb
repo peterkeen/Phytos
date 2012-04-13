@@ -1,24 +1,11 @@
-<h1>Listing photos</h1>
+<h1>All Photos</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Photo</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div class="row">
+<ul class="thumbnails">
 <% @photos.each do |photo| %>
-  <tr>
-    <td><%= photo.name %></td>
-    <td><%= photo.description %></td>
-    <td><%= link_to image_tag(photo.photo.url(:thumb)), photo %></td>
-  </tr>
+  <li class="span2">
+    <%= link_to image_tag(photo.photo.url(:thumb)), photo, :class => 'thumbnail' %>
+  </li>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Photo', new_photo_path %>
+</ul>
+</div>
