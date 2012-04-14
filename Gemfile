@@ -16,6 +16,8 @@ gem 'mini_magick'
 gem 'girl_friday'
 gem 'sinatra'
 gem 'carrierwave_backgrounder', :git => 'git://github.com/lardawge/carrierwave_backgrounder.git'
+gem "will_paginate"
+gem "will_paginate-bootstrap"
 
 # Gems used only for assets and not required
 # in production environments by default.
