@@ -20,6 +20,10 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :album %><br />
+    <%= collection_select(:photo, :album_id, Album.all, :id, :name) %>
+  </div>
+  <div class="field">
     <%= f.label :photo %><br />
     <%= f.file_field :photo %>
     <%= f.hidden_field :photo_cache %>

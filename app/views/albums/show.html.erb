@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @album.name %></h1>
+<p><%= @album.description %></p>
+
+<%= render :partial => 'shared/photo_grid', :locals => {:photos => @photos} %>
+
+<% if user_signed_in? %>
+<%= link_to 'Edit', edit_album_path(@album) %>
+<% end %>

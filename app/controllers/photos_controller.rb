@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.paginate(:page => params[:page], :per_page => 24).order('name desc')
+    @photos = Photo.paginate(:page => params[:page], :per_page => 24).order('name')
 
     respond_to do |format|
       format.html # index.html.erb
