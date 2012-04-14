@@ -10,11 +10,12 @@ gem 'rails', '3.2.3'
 gem 'pg'
 gem 'carrierwave'
 gem "fog", "~> 1.3.1"
-gem 'blitline'
-gem 'flash_cookie_session'
 gem 'devise'
 gem 'mime-types'
-gem 'rmagick'
+gem 'mini_magick'
+gem 'girl_friday'
+gem 'sinatra'
+gem 'carrierwave_backgrounder', :git => 'git://github.com/lardawge/carrierwave_backgrounder.git'
 
 # Gems used only for assets and not required
 # in production environments by default.

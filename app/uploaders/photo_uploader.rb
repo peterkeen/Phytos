@@ -1,14 +1,6 @@
 # encoding: utf-8
 
-module CarrierWave
-  module Uploader
-    module Versions
-      def cache_versions!(new_file)
-        # nothing
-      end
-    end
-  end
-end
+require 'carrierwave_backgrounder'
 
 class PhotoUploader < CarrierWave::Uploader::Base
 
@@ -21,6 +13,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::IsolatedHelper
 
   include CarrierWave::MimeTypes
+  include CarrierWave::MiniMagick
+  include CarrierWave::Backgrounder::Delay
 
   # Choose what kind of storage to use for this uploader:
   storage :fog
@@ -53,10 +47,22 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   process :scale => [50, 50]
   # end
 
-  version :thumb
-  version :small
-  version :medium
-  version :large
+  version :large do
+    process :resize_to_fit => [1024, 768]
+  end
+
+  version :medium, :from_version => :large do
+    process :resize_to_fit => [800, 600]
+  end
+
+  version :small, :from_version => :medium do
+    process :resize_to_fit => [240, 180]
+  end
+
+  version :thumb, :from_version => :small do
+    process :resize_to_fill => [100, 100]
+  end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

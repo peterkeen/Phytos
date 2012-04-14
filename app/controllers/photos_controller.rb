@@ -58,8 +58,6 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        @photo.submit_to_blitline
-        @photo.save
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
         format.json { render json: @photo, status: :created, location: @photo }
       else
